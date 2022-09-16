@@ -3,6 +3,14 @@ package ru.Skoba.javaqa;
 public class Radio {
     private int currentStation;
     private int currentVolume;
+    private int stationAmount;
+    
+    public Radio(){
+        stationAmount = 10;
+    }
+    public Radio(int stationAmount) {
+        this.stationAmount = stationAmount;
+    }
 
     public int getCurrentStation() {
 
@@ -18,14 +26,14 @@ public class Radio {
         if (newCurrentStation < 0) {
             return;
         }
-        if (newCurrentStation > 9) {
+        if (newCurrentStation > stationAmount - 1) {
             return;
         }
         currentStation = newCurrentStation;
     }
 
     public void nextStation() {
-        if (currentStation >= 9) {
+        if (currentStation >= stationAmount - 1) {
             currentStation = 0;
         } else {
             currentStation = currentStation + 1;
@@ -34,7 +42,7 @@ public class Radio {
 
     public void prevStation() {
         if (currentStation <= 0) {
-            currentStation = 9;
+            currentStation = stationAmount - 1;
         } else {
             currentStation = currentStation - 1;
         }
